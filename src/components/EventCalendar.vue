@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue'
+// PERBAIKAN: Menambahkan 'computed' ke impor Vue
+import { ref, computed } from 'vue'
 
 // Logika untuk mendapatkan bulan dan tahun saat ini
 const currentDate = ref(new Date())
