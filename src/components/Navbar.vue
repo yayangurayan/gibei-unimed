@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const isMobileMenuOpen = ref(false)
 
-// PERBARUI 'to' UNTUK KONTAK
+// Daftar menu
 const navLinks = [
   { name: 'Home', to: '/' },
   { name: 'About Us', to: '/about' },
@@ -11,7 +11,7 @@ const navLinks = [
   { name: 'SPM', to: '/spm' },
   { name: 'Artikel', to: '/artikel' },
   { name: 'Gallery', to: '/gallery' },
-  { name: 'Kontak', to: '/kontak' }, // <-- PERUBAHAN DI SINI
+  { name: 'Kontak', to: '/kontak' },
 ]
 </script>
 
@@ -21,25 +21,36 @@ const navLinks = [
       <div class="flex items-center justify-between h-16">
         
         <!-- Logo (Kiri) -->
-        <div class="flex-shrink-0">
-          <router-link to="/" class="text-white font-poppins font-bold text-xl">
-            GIBEI UNIMED
-          </router-link>
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <router-link to="/" class="text-white font-poppins font-bold text-xl">
+              GIBEI UNIMED
+            </router-link>
+          </div>
+          <!-- Menu Desktop (Kiri) -->
+          <div class="hidden md:block">
+            <ul class="ml-10 flex items-baseline space-x-4">
+              <li v-for="link in navLinks" :key="link.name">
+                <router-link
+                  :to="link.to" 
+                  class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-poppins font-medium transition-colors duration-300"
+                  active-class="bg-white bg-opacity-10 font-semibold"
+                >
+                  {{ link.name }}
+                </router-link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <!-- Menu Desktop (Kanan) -->
+        <!-- Tombol Login (Kanan, Desktop) - (WDD 4.4) -->
         <div class="hidden md:block">
-          <ul class="ml-10 flex items-baseline space-x-4">
-            <li v-for="link in navLinks" :key="link.name">
-              <router-link
-                :to="link.to" 
-                class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-poppins font-medium transition-colors"
-                active-class="bg-white bg-opacity-10 font-semibold"
-              >
-                {{ link.name }}
-              </router-link>
-            </li>
-          </ul>
+          <router-link
+            to="/login"
+            class="bg-white text-gibei-primary font-poppins font-semibold px-5 py-2 rounded-full text-sm hover:bg-gibei-secondary transition-colors duration-300 transform hover:scale-105"
+          >
+            Login / Daftar
+          </router-link>
         </div>
 
         <!-- Tombol Hamburger (Mobile) -->
@@ -81,6 +92,16 @@ const navLinks = [
               @click="isMobileMenuOpen = false"
             >
               {{ link.name }}
+            </router-link>
+          </li>
+          <!-- Tombol Login (Mobile) -->
+          <li>
+            <router-link
+              to="/login"
+              class="bg-gibei-secondary text-gibei-primary block px-3 py-3 rounded-md text-base font-poppins font-semibold transition-colors mt-3 text-center"
+              @click="isMobileMenuOpen = false"
+            >
+              Login / Daftar
             </router-link>
           </li>
         </ul>

@@ -5,8 +5,9 @@ import Events from '../views/Events.vue'
 import SPM from '../views/SPM.vue'
 import Articles from '../views/Articles.vue'
 import Gallery from '../views/Gallery.vue'
-// 1. Impor Halaman Kontak
 import Contact from '../views/Contact.vue'
+// 1. Impor Halaman Login baru
+import Login from '../views/Login.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -15,11 +16,12 @@ const routes = [
   { path: '/spm', name: 'SPM', component: SPM },
   { path: '/artikel', name: 'Artikel', component: Articles },
   { path: '/gallery', name: 'Gallery', component: Gallery },
-  // 2. Tambahkan Rute Kontak
+  { path: '/kontak', name: 'Kontak', component: Contact },
+  // 2. Tambahkan Rute Login (WDD 8.0)
   {
-    path: '/kontak',
-    name: 'Kontak',
-    component: Contact,
+    path: '/login',
+    name: 'Login',
+    component: Login,
   },
 ]
 

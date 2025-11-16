@@ -1,27 +1,33 @@
 <script setup>
-// File ini sekarang menjadi JAUH LEBIH BERSIH!
+import { useRoute } from 'vue-router'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
+
+// 1. Impor `useRoute` untuk mendapatkan path URL saat ini
+const route = useRoute()
 </script>
 
 <template>
-  <!-- Navbar dan Footer ada di SETIAP halaman -->
   <Navbar />
   
   <main>
-    <!-- 
-      PERBAIKAN: 
-      Wrapper <transition> dihapus untuk memperbaiki bug
-      halaman kosong saat navigasi.
-    -->
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <!-- 
+          PERBAIKAN KUNCI: 
+          Menambahkan :key="route.path" akan MEMAKSA 
+          Vue untuk me-mount ulang komponen halaman (cth: Home.vue)
+          setiap kali Anda navigasi. Ini akan me-reset
+          state v-motion dan memperbaiki bug halaman kosong.
+        -->
+        <component :is="Component" :key="route.path" />
+      </transition>
+    </router-view>
   </main>
 
   <Footer />
 </template>
 
 <style>
-/* PERBAIKAN: 
-  Class .fade-* telah dihapus dari sini.
-*/
+/* CSS global (termasuk .fade-*) ada di src/style.css */
 </style>

@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 import EventCard from '../components/EventCard.vue'
 
 // --- Data Placeholder (Lebih banyak data untuk simulasi) ---
-// (Nanti ini akan datang dari API/CMS)
 const allEvents = ref([
   {
     id: 1,
@@ -80,7 +79,7 @@ const filteredEvents = computed(() => {
         <h1 
           v-motion
           :initial="{ opacity: 0, y: 50 }"
-          :enter="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }"
+          :enter="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, delay: 150 } }"
           class="font-poppins text-5xl md:text-7xl font-extrabold text-gibei-primary"
         >
           Events & Kegiatan
@@ -88,7 +87,7 @@ const filteredEvents = computed(() => {
         <p 
           v-motion
           :initial="{ opacity: 0, y: 50 }"
-          :enter="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, delay: 100 } }"
+          :enter="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, delay: 250 } }"
           class="mt-4 text-xl text-gibei-text max-w-2xl mx-auto"
         >
           Temukan arsip dan jadwal kegiatan terbaru kami. Selalu ada hal baru untuk dipelajari.
@@ -104,7 +103,7 @@ const filteredEvents = computed(() => {
         <div 
           v-motion
           :initial="{ opacity: 0, y: 50 }"
-          :enter="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, delay: 200 } }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }"
           class="max-w-2xl mx-auto mb-16"
         >
           <label for="search" class="sr-only">Cari Event</label>
@@ -156,9 +155,45 @@ const filteredEvents = computed(() => {
     </section>
 
     <!-- 
-      Section 3: Kalender (WDD 3.2) 
-      (Akan kita tambahkan di iterasi berikutnya)
+      SECTION BARU (WDD 3.2): Kalender Kegiatan
     -->
+    <section class="bg-gibei-secondary py-20 md:py-28 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Judul Section -->
+        <div 
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }"
+          class="text-center mb-16"
+        >
+          <h2 class="font-poppins text-4xl md:text-5xl font-extrabold text-gibei-primary">
+            Jadwal Kegiatan
+          </h2>
+          <p class="mt-4 text-lg text-gibei-text max-w-2xl mx-auto">
+            Lihat arsip dan jadwal mendatang kami dalam tampilan kalender (WDD 3.2).
+          </p>
+        </div>
+
+        <!-- Placeholder Kalender -->
+        <div
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, delay: 200 } }"
+          class="bg-white p-8 rounded-lg shadow-xl"
+        >
+          <div class="h-96 flex items-center justify-center">
+            <span class="font-poppins text-2xl text-gibei-primary font-semibold">
+              [Placeholder untuk Kalender Interaktif]
+            </span>
+          </div>
+          <p class="text-center mt-4 font-inter text-gibei-text">
+            Fitur kalender akan segera hadir.
+          </p>
+        </div>
+
+      </div>
+    </section>
 
   </div>
 </template>

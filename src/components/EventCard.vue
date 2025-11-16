@@ -7,14 +7,14 @@ defineProps({
 
 <template>
   <!-- 
-    Komponen Kartu Event (Reusable)
-    Dibuat dengan style 'clean' dan 'profesional' (WDD 5.1)
+    PERBAIKAN: Menambahkan duration-500 dan group-hover:shadow-xl
+    untuk micro-interaction yang lebih "elegan" (WDD 5.1)
   -->
   <div 
     v-motion
     :initial="{ opacity: 0, y: 50 }"
     :visibleOnce="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, delay: event.delay } }"
-    class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col group"
+    class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col group transition-all duration-500 hover:shadow-2xl"
   >
     <!-- Gambar/Poster Event -->
     <div class="overflow-hidden">
@@ -31,7 +31,7 @@ defineProps({
       <span class="block text-gibei-primary font-inter font-semibold text-sm mb-2">{{ event.date }}</span>
       
       <!-- Judul Event -->
-      <h3 class="font-poppins font-bold text-xl text-gibei-primary mb-3 leading-tight group-hover:text-blue-800 transition-colors">
+      <h3 class="font-poppins font-bold text-xl text-gibei-primary mb-3 leading-tight group-hover:text-blue-800 transition-colors duration-300">
         {{ event.title }}
       </h3>
       

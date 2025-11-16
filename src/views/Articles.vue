@@ -110,7 +110,7 @@ const filteredArticles = computed(() => {
           :enter="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, delay: 100 } }"
           class="mt-4 text-xl text-gibei-text max-w-2xl mx-auto"
         >
-          Pusat materi edukasi GIBEI UNIMED yang tersusun rapi (WDD 5.0).
+          Pusat materi edukasi GIBEI UNIMED yang tersusun rapi.
         </p>
       </div>
     </section>

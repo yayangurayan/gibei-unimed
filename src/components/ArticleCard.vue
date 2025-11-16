@@ -7,14 +7,14 @@ defineProps({
 
 <template>
   <!-- 
-    Komponen Kartu Artikel (Reusable)
-    Dibuat dengan style 'bersih' (WDD 5.1)
+    PERBAIKAN: Menambahkan duration-500 dan group-hover:shadow-xl
+    untuk micro-interaction yang lebih "elegan" (WDD 5.1)
   -->
   <div 
     v-motion
     :initial="{ opacity: 0, y: 50 }"
     :visibleOnce="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, delay: article.delay } }"
-    class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col group"
+    class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col group transition-all duration-500 hover:shadow-2xl"
   >
     <!-- Gambar Artikel -->
     <div class="overflow-hidden relative">
@@ -32,7 +32,7 @@ defineProps({
     <!-- Konten Teks -->
     <div class="p-6 flex flex-col flex-grow">
       <!-- Judul Artikel -->
-      <h3 class="font-poppins font-bold text-xl text-gibei-primary mb-4 leading-tight group-hover:text-blue-800 transition-colors">
+      <h3 class="font-poppins font-bold text-xl text-gibei-primary mb-4 leading-tight group-hover:text-blue-800 transition-colors duration-300">
         {{ article.title }}
       </h3>
       
